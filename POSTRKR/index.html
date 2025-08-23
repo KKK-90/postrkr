@@ -136,9 +136,9 @@
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         .nav-tabs {
@@ -653,7 +653,7 @@
     <!-- Login Screen -->
     <div id="loginScreen" class="login-container">
         <div class="login-card">
-            <h1 class="login-title">🏢 Advanced POS Deployment Tracker</h1>
+            <h1 class="login-title">POS Deployment Tracker</h1>
             <p style="color: var(--secondary-color); margin-bottom: 30px;">Select your user account to continue</p>
             <div class="user-buttons">
                 <button class="user-btn" onclick="login('KARNA')">KARNA</button>
@@ -677,8 +677,8 @@
         <header class="app-header">
             <div class="header-content">
                 <div>
-                    <h1 class="app-title">🏢 Advanced POS Deployment Tracker</h1>
-                    <p style="opacity: 0.9;">Multi-User Enterprise Deployment Management</p>
+                    <h1 class="app-title">POS Deployment Tracker</h1>
+                    <p style="opacity: 0.9;">SBI-DOP POS Machines Deployment Management</p>
                 </div>
                 <div class="user-info">
                     <div class="current-user" id="currentUser">User</div>
@@ -691,11 +691,11 @@
         <nav class="app-nav">
             <div class="nav-container">
                 <div class="nav-tabs">
-                    <button class="nav-tab active" onclick="showTab('dashboard')">📊 Dashboard</button>
-                    <button class="nav-tab" onclick="showTab('locations')">📍 Locations</button>
-                    <button class="nav-tab" onclick="showTab('progress')">📈 Progress</button>
-                    <button class="nav-tab" onclick="showTab('reports')">📋 Reports</button>
-                    <button class="nav-tab" onclick="showTab('data-management')">💾 Data Management</button>
+                    <button class="nav-tab active" onclick="showTab('dashboard')">Dashboard</button>
+                    <button class="nav-tab" onclick="showTab('locations')">Locations</button>
+                    <button class="nav-tab" onclick="showTab('progress')">Progress</button>
+                    <button class="nav-tab" onclick="showTab('reports')">Reports</button>
+                    <button class="nav-tab" onclick="showTab('data-management')">Data Management</button>
                 </div>
             </div>
         </nav>
@@ -705,10 +705,10 @@
             <!-- Dashboard Tab -->
             <div id="dashboard" class="tab-content active">
                 <div class="section-header">
-                    <h2 class="section-title">📊 Deployment Dashboard</h2>
+                    <h2 class="section-title">Deployment Dashboard</h2>
                     <div class="flex gap-15">
-                        <button class="btn btn-success" onclick="exportDashboardPDF()">📄 Export Dashboard PDF</button>
-                        <button class="btn btn-primary" onclick="showLocationForm()">➕ Add Location</button>
+                        <button class="btn btn-success" onclick="exportDashboardPDF()">Export Dashboard PDF</button>
+                        <button class="btn btn-primary" onclick="showLocationForm()">Add Location</button>
                     </div>
                 </div>
 
@@ -719,7 +719,7 @@
 
                 <!-- Division-wise Statistics -->
                 <div class="section-header">
-                    <h3 class="section-title">📍 Division-wise Status</h3>
+                    <h3 class="section-title">Division-wise Status</h3>
                 </div>
                 <div class="division-stats" id="divisionStats">
                     <!-- Division stats will be populated here -->
@@ -727,7 +727,7 @@
 
                 <!-- Recent Activity -->
                 <div class="section-header">
-                    <h3 class="section-title">📅 Recent Activity</h3>
+                    <h3 class="section-title">Recent Activity</h3>
                 </div>
                 <div id="recentActivity">
                     <!-- Recent activity will be shown here -->
@@ -737,7 +737,7 @@
             <!-- Locations Tab -->
             <div id="locations" class="tab-content">
                 <div class="section-header">
-                    <h2 class="section-title">📍 All Locations</h2>
+                    <h2 class="section-title">All Locations</h2>
                     <button class="btn btn-primary" onclick="showLocationForm()">➕ Add Location</button>
                 </div>
 
@@ -764,12 +764,12 @@
             <!-- Progress Tab -->
             <div id="progress" class="tab-content">
                 <div class="section-header">
-                    <h2 class="section-title">📈 Progress Tracking</h2>
+                    <h2 class="section-title">Progress Tracking</h2>
                     <div class="flex gap-15">
                         <select class="filter-select" id="progressDivisionFilter" onchange="filterProgressByDivision()">
                             <option value="">All Divisions</option>
                         </select>
-                        <button class="btn btn-info" onclick="exportProgressPDF()">📄 Export Progress PDF</button>
+                        <button class="btn btn-info" onclick="exportProgressPDF()">Export Progress PDF</button>
                     </div>
                 </div>
 
@@ -794,8 +794,8 @@
                 <div class="section-header">
                     <h2 class="section-title">📋 Comprehensive Reports</h2>
                     <div class="flex gap-15">
-                        <button class="btn btn-success" onclick="exportReportsPDF()">📄 Export Reports PDF</button>
-                        <button class="btn btn-info" onclick="exportToExcel()">📊 Export to Excel</button>
+                        <button class="btn btn-success" onclick="exportReportsPDF()">Export Reports PDF</button>
+                        <button class="btn btn-info" onclick="exportToExcel()">Export to Excel</button>
                         <button class="btn btn-secondary" onclick="printReports()">🖨️ Print</button>
                     </div>
                 </div>
