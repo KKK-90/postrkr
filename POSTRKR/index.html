@@ -686,7 +686,7 @@
             <div class="nav-container">
                 <div class="nav-tabs">
                     <button class="nav-tab active" onclick="showTab('dashboard')">Dashboard</button>
-                    <button class="nav-tab" onclick="showTab('locations')">Office wise details</button>
+                    <button class="nav-tab" onclick="showTab('locations')">Office wise Data</button>
                     <button class="nav-tab" onclick="showTab('progress')">Progress</button>
                     <button class="nav-tab" onclick="showTab('reports')">Reports</button>
                     <button class="nav-tab" onclick="showTab('data-management')">Data Management</button>
@@ -702,7 +702,7 @@
                     <h2 class="section-title">Deployment Dashboard</h2>
                     <div class="flex gap-15">
                         <button class="btn btn-success" onclick="exportDashboardPDF()">Export Dashboard PDF</button>
-                        <button class="btn btn-primary" onclick="showLocationForm()">Add Post Office</button>
+                        <button class="btn btn-primary" onclick="showLocationForm()">Add Location</button>
                     </div>
                 </div>
 
@@ -732,7 +732,7 @@
             <div id="locations" class="tab-content">
                 <div class="section-header">
                     <h2 class="section-title">All Post Offices</h2>
-                    <button class="btn btn-primary" onclick="showLocationForm()">Add Post Office</button>
+                    <button class="btn btn-primary" onclick="showLocationForm()">Add Post office</button>
                 </div>
 
                 <div class="filters">
@@ -743,7 +743,7 @@
                     <select class="filter-select" id="statusFilter" onchange="filterLocations()">
                         <option value="">All Status</option>
                         <option value="Pending">Pending</option>
-                        <option value="Device Received">Device(s) Received</option>
+                        <option value="Device Received">Device Received</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>
                         <option value="Failed">Failed</option>
@@ -772,7 +772,7 @@
                     <select class="filter-select" id="progressStatusFilter" onchange="filterProgress()">
                         <option value="">All Status</option>
                         <option value="Pending">Pending</option>
-                        <option value="Device Received">Device(s) Received</option>
+                        <option value="Device Received">Device Received</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>
                     </select>
@@ -786,7 +786,7 @@
             <!-- Reports Tab -->
             <div id="reports" class="tab-content">
                 <div class="section-header">
-                    <h2 class="section-title">Comprehensive Report</h2>
+                    <h2 class="section-title">Comprehensive Reports</h2>
                     <div class="flex gap-15">
                         <button class="btn btn-success" onclick="exportReportsPDF()">Export Reports PDF</button>
                         <button class="btn btn-info" onclick="exportToExcel()">Export to Excel</button>
@@ -807,7 +807,7 @@
 
                 <!-- Excel Import/Export Section -->
                 <div class="card mb-30">
-                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">Dynamic Excel Management</h3>
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">📊 Dynamic Excel Management</h3>
                     <div class="flex gap-15 mb-20" style="flex-wrap: wrap;">
                         <button class="btn btn-success btn-lg" onclick="downloadTemplate()">📥 Download Template</button>
                         <button class="btn btn-primary btn-lg" onclick="exportCurrentData()">📤 Export Current Data</button>
@@ -843,11 +843,11 @@
     <div id="locationModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeLocationModal()">&times;</span>
-            <h2 id="modalTitle">Add New Post Office</h2>
+            <h2 id="modalTitle">Add New Post office</h2>
 
             <form id="locationForm" onsubmit="saveLocation(event)">
                 <!-- Basic Information -->
-                <h3 style="color: var(--success-color); margin: 20px 0 15px 0;">Basic Information</h3>
+                <h3 style="color: var(--success-color); margin: 20px 0 15px 0;">Office Information</h3>
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="division">Division *</label>
@@ -1024,7 +1024,6 @@
             }
 
             
-
             saveToStorage() {
                 const data = {
                     locations: this.locations,
@@ -1114,11 +1113,11 @@
                 const statsHTML = `
                     <div class="stat-card">
                         <div class="stat-number">${totalLocations}</div>
-                        <div class="stat-label">Total Locations</div>
+                        <div class="stat-label">Total Offices</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">${totalDevicesDeployed}</div>
-                        <div class="stat-label">Deployed Devices</div>
+                        <div class="stat-label">Devices Received</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">${pendingInstallations}</div>
@@ -1202,11 +1201,11 @@
                 if (recentLocations.length === 0) {
                     html = `
                         <div class="alert alert-info">
-                            <h4>Welcome to Advanced POS Tracker!</h4>
-                            <p>Start by importing your Excel data or adding Post Offices manually.</p>
+                            <h4>Welcome to SBI-DOP POS Tracker!</h4>
+                            <p>Start by importing your Excel data or adding Post offices manually.</p>
                             <div style="margin-top: 15px;">
                                 <button class="btn btn-primary" onclick="tracker.showTab('data-management')">Manage Data</button>
-                                <button class="btn btn-success" onclick="tracker.showLocationForm()">Add Post Office</button>
+                                <button class="btn btn-success" onclick="tracker.showLocationForm()">Add Post office</button>
                             </div>
                         </div>
                     `;
@@ -1399,7 +1398,7 @@
                 this.saveToStorage();
                 this.closeLocationModal();
                 this.updateDashboard();
-                alert('Post Office saved successfully!');
+                alert('Location saved successfully!');
             }
 
             // Display Functions
@@ -1413,9 +1412,9 @@
                 if (locationsList.length === 0) {
                     html = `
                         <div class="alert alert-info">
-                            <h4>No post office found</h4>
-                            <p>Add Post offices to get started with deployment tracking.</p>
-                            <button class="btn btn-primary" onclick="tracker.showLocationForm()">Add Post Office</button>
+                            <h4>No offices found</h4>
+                            <p>Add offices to get started with deployment tracking.</p>
+                            <button class="btn btn-primary" onclick="tracker.showLocationForm()">Add Office</button>
                         </div>
                     `;
                 } else {
@@ -1596,7 +1595,7 @@
 
                 let html = `
                     <div class="section-header">
-                        <h3 class="section-title">Summary</h3>
+                        <h3 class="section-title">Report Summary</h3>
                     </div>
                     <div class="stats-grid mb-30">
                         <div class="stat-card">
@@ -1605,11 +1604,11 @@
                         </div>
                         <div class="stat-card">
                             <div class="stat-number">${this.locations.reduce((sum, loc) => sum + (loc.noOfDevicesReceived || 0), 0)}</div>
-                            <div class="stat-label">Devices Received</div>
+                            <div class="stat-label">Total Devices Received</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-number">${Math.round(this.getCompletionRate())}%</div>
-                            <div class="stat-label">Completion %</div>
+                            <div class="stat-label">Overall Completion Rate</div>
                         </div>
                     </div>
                 `;
