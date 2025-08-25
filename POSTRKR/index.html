@@ -662,12 +662,6 @@
                 <button class="user-btn" onclick="login('BGR')">BGR</button>
                 <button class="user-btn" onclick="login('SBI_DOP')">SBI_DOP</button>
             </div>
-            <div style="margin-top: 30px; font-size: 0.9rem; color: var(--secondary-color);">
-                <p>✅ PDF Export</p>
-                <p>✅ Multi-User Access</p>
-                <p>✅ Division Drill-down</p>
-                <p>✅ Dynamic Excel Import/Export</p>
-            </div>
         </div>
     </div>
 
@@ -692,7 +686,7 @@
             <div class="nav-container">
                 <div class="nav-tabs">
                     <button class="nav-tab active" onclick="showTab('dashboard')">Dashboard</button>
-                    <button class="nav-tab" onclick="showTab('locations')">Locations</button>
+                    <button class="nav-tab" onclick="showTab('locations')">Office wise details</button>
                     <button class="nav-tab" onclick="showTab('progress')">Progress</button>
                     <button class="nav-tab" onclick="showTab('reports')">Reports</button>
                     <button class="nav-tab" onclick="showTab('data-management')">Data Management</button>
@@ -708,7 +702,7 @@
                     <h2 class="section-title">Deployment Dashboard</h2>
                     <div class="flex gap-15">
                         <button class="btn btn-success" onclick="exportDashboardPDF()">Export Dashboard PDF</button>
-                        <button class="btn btn-primary" onclick="showLocationForm()">Add Location</button>
+                        <button class="btn btn-primary" onclick="showLocationForm()">Add Post Office</button>
                     </div>
                 </div>
 
@@ -727,7 +721,7 @@
 
                 <!-- Recent Activity -->
                 <div class="section-header">
-                    <h3 class="section-title">Recent Activity</h3>
+                    <h3 class="section-title">Recent Activities</h3>
                 </div>
                 <div id="recentActivity">
                     <!-- Recent activity will be shown here -->
@@ -737,8 +731,8 @@
             <!-- Locations Tab -->
             <div id="locations" class="tab-content">
                 <div class="section-header">
-                    <h2 class="section-title">All Locations</h2>
-                    <button class="btn btn-primary" onclick="showLocationForm()">➕ Add Location</button>
+                    <h2 class="section-title">All Post Offices</h2>
+                    <button class="btn btn-primary" onclick="showLocationForm()">Add Post Office</button>
                 </div>
 
                 <div class="filters">
@@ -749,7 +743,7 @@
                     <select class="filter-select" id="statusFilter" onchange="filterLocations()">
                         <option value="">All Status</option>
                         <option value="Pending">Pending</option>
-                        <option value="Device Received">Device Received</option>
+                        <option value="Device Received">Device(s) Received</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>
                         <option value="Failed">Failed</option>
@@ -778,7 +772,7 @@
                     <select class="filter-select" id="progressStatusFilter" onchange="filterProgress()">
                         <option value="">All Status</option>
                         <option value="Pending">Pending</option>
-                        <option value="Device Received">Device Received</option>
+                        <option value="Device Received">Device(s) Received</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>
                     </select>
@@ -792,7 +786,7 @@
             <!-- Reports Tab -->
             <div id="reports" class="tab-content">
                 <div class="section-header">
-                    <h2 class="section-title">📋 Comprehensive Reports</h2>
+                    <h2 class="section-title">Comprehensive Report</h2>
                     <div class="flex gap-15">
                         <button class="btn btn-success" onclick="exportReportsPDF()">Export Reports PDF</button>
                         <button class="btn btn-info" onclick="exportToExcel()">Export to Excel</button>
@@ -813,11 +807,11 @@
 
                 <!-- Excel Import/Export Section -->
                 <div class="card mb-30">
-                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">📊 Dynamic Excel Management</h3>
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">Dynamic Excel Management</h3>
                     <div class="flex gap-15 mb-20" style="flex-wrap: wrap;">
                         <button class="btn btn-success btn-lg" onclick="downloadTemplate()">📥 Download Template</button>
                         <button class="btn btn-primary btn-lg" onclick="exportCurrentData()">📤 Export Current Data</button>
-                        <button class="btn btn-info btn-lg" onclick="showImportModal()">📊 Import Excel Data</button>
+                        <button class="btn btn-info btn-lg" onclick="showImportModal()">Import Excel Data</button>
                     </div>
                     <div class="alert alert-info">
                         <strong>Dynamic Excel Management:</strong> Export your current data, edit in Excel (add/remove columns, modify data), then re-import to update the system automatically.
@@ -826,7 +820,7 @@
 
                 <!-- Backup & Restore Section -->
                 <div class="card mb-30">
-                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">🔄 Backup & Restore</h3>
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">Backup & Restore</h3>
                     <div class="flex gap-15 mb-20" style="flex-wrap: wrap;">
                         <button class="btn btn-warning btn-lg" onclick="createBackup()">💾 Create Backup</button>
                         <button class="btn btn-secondary btn-lg" onclick="restoreBackup()">📂 Restore Backup</button>
@@ -836,7 +830,7 @@
 
                 <!-- Data Statistics -->
                 <div class="card">
-                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">📈 Data Statistics</h3>
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">Data Statistics</h3>
                     <div id="dataStatistics">
                         <!-- Data statistics will be shown here -->
                     </div>
@@ -849,11 +843,11 @@
     <div id="locationModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeLocationModal()">&times;</span>
-            <h2 id="modalTitle">Add New Location</h2>
+            <h2 id="modalTitle">Add New Post Office</h2>
 
             <form id="locationForm" onsubmit="saveLocation(event)">
                 <!-- Basic Information -->
-                <h3 style="color: var(--success-color); margin: 20px 0 15px 0;">📍 Basic Information</h3>
+                <h3 style="color: var(--success-color); margin: 20px 0 15px 0;">Basic Information</h3>
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="division">Division *</label>
@@ -903,7 +897,7 @@
                 </div>
 
                 <!-- Progress Information -->
-                <h3 style="color: var(--info-color); margin: 20px 0 15px 0;">📈 Progress Information</h3>
+                <h3 style="color: var(--info-color); margin: 20px 0 15px 0;">Progress Information</h3>
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="dateOfReceiptOfDevice">Device Receipt Date</label>
@@ -940,7 +934,7 @@
                 </div>
 
                 <div class="text-center" style="margin-top: 30px;">
-                    <button type="submit" class="btn btn-success btn-lg">💾 Save Location</button>
+                    <button type="submit" class="btn btn-success btn-lg">💾 Save</button>
                     <button type="button" class="btn btn-secondary" onclick="closeLocationModal()">❌ Cancel</button>
                 </div>
             </form>
@@ -951,7 +945,7 @@
     <div id="importModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeImportModal()">&times;</span>
-            <h2>📊 Import Excel Data</h2>
+            <h2>Import Excel Data</h2>
 
             <div style="margin: 20px 0;">
                 <input type="file" id="excelFileInput" accept=".xlsx,.xls" onchange="handleExcelImport(event)" style="margin-bottom: 20px;">
@@ -1029,44 +1023,7 @@
                 this.updateDashboard();
             }
 
-            loadSampleData() {
-                if (this.locations.length === 0) {
-                    this.locations = [
-                        {
-                            id: 1, slNo: 1, division: "Chennai Division", postOfficeName: "Chennai GPO",
-                            postOfficeId: "CHN001", officeType: "Head Post Office", contactPersonName: "Rajesh Kumar",
-                            contactPersonNo: "9876543210", altContactNo: "9876543211", contactEmail: "rajesh.kumar@postoffice.gov.in",
-                            locationAddress: "Anna Salai, Chennai", location: "Central Chennai", city: "Chennai",
-                            state: "Tamil Nadu", pincode: "600001", numberOfPosToBeDeployed: 5,
-                            typeOfPosTerminal: "EZETAP ANDROID X990", dateOfReceiptOfDevice: "2024-08-15",
-                            noOfDevicesReceived: 5, serialNo: "EZT001,EZT002,EZT003,EZT004,EZT005",
-                            installationStatus: "Completed", functionalityStatus: "Working", issuesIfAny: "None"
-                        },
-                        {
-                            id: 2, slNo: 2, division: "Mumbai Division", postOfficeName: "Mumbai Central PO",
-                            postOfficeId: "MUM001", officeType: "Sub Post Office", contactPersonName: "Priya Sharma",
-                            contactPersonNo: "9876543212", altContactNo: "9876543213", contactEmail: "priya.sharma@postoffice.gov.in",
-                            locationAddress: "Mumbai Central Station Road", location: "Mumbai Central", city: "Mumbai",
-                            state: "Maharashtra", pincode: "400008", numberOfPosToBeDeployed: 3,
-                            typeOfPosTerminal: "EZETAP ANDROID X990", dateOfReceiptOfDevice: "2024-08-20",
-                            noOfDevicesReceived: 3, serialNo: "EZT006,EZT007,EZT008",
-                            installationStatus: "In Progress", functionalityStatus: "Testing", issuesIfAny: "Network connectivity issues"
-                        },
-                        {
-                            id: 3, slNo: 3, division: "Delhi Division", postOfficeName: "New Delhi GPO",
-                            postOfficeId: "DEL001", officeType: "Head Post Office", contactPersonName: "Amit Singh",
-                            contactPersonNo: "9876543214", altContactNo: "9876543215", contactEmail: "amit.singh@postoffice.gov.in",
-                            locationAddress: "Sansad Marg, New Delhi", location: "Central Delhi", city: "New Delhi",
-                            state: "Delhi", pincode: "110001", numberOfPosToBeDeployed: 4,
-                            typeOfPosTerminal: "EZETAP ANDROID X990", dateOfReceiptOfDevice: "",
-                            noOfDevicesReceived: 0, serialNo: "",
-                            installationStatus: "Pending", functionalityStatus: "Not Tested", issuesIfAny: "Awaiting device shipment"
-                        }
-                    ];
-                    this.nextLocationId = 4;
-                    this.saveToStorage();
-                }
-            }
+            
 
             saveToStorage() {
                 const data = {
@@ -1245,11 +1202,11 @@
                 if (recentLocations.length === 0) {
                     html = `
                         <div class="alert alert-info">
-                            <h4>🚀 Welcome to Advanced POS Tracker!</h4>
-                            <p>Start by importing your Excel data or adding locations manually.</p>
+                            <h4>Welcome to Advanced POS Tracker!</h4>
+                            <p>Start by importing your Excel data or adding Post Offices manually.</p>
                             <div style="margin-top: 15px;">
-                                <button class="btn btn-primary" onclick="tracker.showTab('data-management')">📊 Manage Data</button>
-                                <button class="btn btn-success" onclick="tracker.showLocationForm()">➕ Add Location</button>
+                                <button class="btn btn-primary" onclick="tracker.showTab('data-management')">Manage Data</button>
+                                <button class="btn btn-success" onclick="tracker.showLocationForm()">Add Post Office</button>
                             </div>
                         </div>
                     `;
@@ -1442,7 +1399,7 @@
                 this.saveToStorage();
                 this.closeLocationModal();
                 this.updateDashboard();
-                alert('Location saved successfully!');
+                alert('Post Office saved successfully!');
             }
 
             // Display Functions
@@ -1456,9 +1413,9 @@
                 if (locationsList.length === 0) {
                     html = `
                         <div class="alert alert-info">
-                            <h4>📍 No locations found</h4>
-                            <p>Add locations to get started with deployment tracking.</p>
-                            <button class="btn btn-primary" onclick="tracker.showLocationForm()">➕ Add First Location</button>
+                            <h4>No post office found</h4>
+                            <p>Add Post offices to get started with deployment tracking.</p>
+                            <button class="btn btn-primary" onclick="tracker.showLocationForm()">Add Post Office</button>
                         </div>
                     `;
                 } else {
@@ -1639,32 +1596,32 @@
 
                 let html = `
                     <div class="section-header">
-                        <h3 class="section-title">📊 Overall Summary</h3>
+                        <h3 class="section-title">Summary</h3>
                     </div>
                     <div class="stats-grid mb-30">
                         <div class="stat-card">
                             <div class="stat-number">${this.locations.length}</div>
-                            <div class="stat-label">Total Locations</div>
+                            <div class="stat-label">Total Post offices</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-number">${this.locations.reduce((sum, loc) => sum + (loc.noOfDevicesReceived || 0), 0)}</div>
-                            <div class="stat-label">Total Devices Deployed</div>
+                            <div class="stat-label">Devices Received</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-number">${Math.round(this.getCompletionRate())}%</div>
-                            <div class="stat-label">Overall Completion Rate</div>
+                            <div class="stat-label">Completion %</div>
                         </div>
                     </div>
                 `;
 
                 html += `
                     <div class="card mb-30">
-                        <h3 style="margin-bottom: 20px; color: var(--primary-color);">📍 Division-wise Detailed Report</h3>
+                        <h3 style="margin-bottom: 20px; color: var(--primary-color);">Division-wise Detailed Report</h3>
                         <table class="data-table">
                             <thead>
                                 <tr>
                                     <th>Division</th>
-                                    <th>Total Locations</th>
+                                    <th>Total Offices</th>
                                     <th>Completed</th>
                                     <th>In Progress</th>
                                     <th>Pending</th>
